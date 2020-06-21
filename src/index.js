@@ -13,7 +13,7 @@ app.use(trackRoutes);
 
 // - ---------------------MongoDB Connection code  Start here--------------------------------
 const mongoUri =
-  "mongodb+srv://asbaghel:ahinsa74@cluster0-prezq.mongodb.net/test?retryWrites=true&w=majority"; //changed
+  "mongodb+srv://asbaghel:----@cluster0-prezq.mongodb.net/test?retryWrites=true&w=majority"; //changed
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -33,7 +33,7 @@ app.get("/", requireAuth, (req, res) => {
   res.send(`Your email ${req.user.email}`);
 });
 
-const PORT = (port = process.env.PORT || 3010);
+const PORT = (port = process.env.PORT || 3000);
 app.listen(PORT, () => {
   console.log(`listening on node ${PORT} `);
 });

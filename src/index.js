@@ -33,7 +33,7 @@ app.get("/", requireAuth, (req, res) => {
   res.send(`Your email ${req.user.email}`);
 });
 
-const PORT = 3000;
+const PORT = 3010;
 app.listen(PORT, () => {
   console.log(`listening on node ${PORT} `);
 });

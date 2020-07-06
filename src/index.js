@@ -1,4 +1,5 @@
 require("./models/User");
+require("./models/UserProfile");
 require("./models/Track");
 const requireAuth = require("./middlewares/requireAuth");
 const express = require("express");
@@ -13,7 +14,7 @@ app.use(trackRoutes);
 
 // - ---------------------MongoDB Connection code  Start here--------------------------------
 const mongoUri =
-  "mongodb+srv://asbaghel:ahinsa74@cluster0-prezq.mongodb.net/db91?retryWrites=true&w=majority"; //changed
+  "mongodb+srv://asbaghel:----@cluster0-prezq.mongodb.net/db94?retryWrites=true&w=majority"; //changed
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useCreateIndex: true,

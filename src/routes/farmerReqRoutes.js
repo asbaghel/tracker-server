@@ -7,9 +7,14 @@ const router = express.Router();
 
 router.get("/farmerRequest/:requestId", async (req, res) => {
   console.log(req.params.requestId);
-  const data = await FarmerReq.findOne({ req: req.params.requestId });
-
-  res.send(data);
+  try {
+    var id = req.params.requestId;
+    const data = await FarmerReq.findById(id);
+    console.log("data", data);
+    res.send(data);
+  } catch (err) {
+    console.log("No data Found bcoz _id is wrong ");
+  }
 });
 
 router.post("/requestData", async (req, res) => {

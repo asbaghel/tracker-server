@@ -25,7 +25,7 @@ router.post("/requestData", async (req, res) => {
     locations,
     shippingDetails,
     reqActive,
-  } = req.body;
+  } = req.body.farmerRequestJSON;
 
   if (
     !name ||

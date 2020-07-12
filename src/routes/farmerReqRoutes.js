@@ -18,6 +18,7 @@ router.get("/farmerRequest/:requestId", async (req, res) => {
 });
 
 router.post("/requestData", async (req, res) => {
+  console.log(req.body.farmerRequestJSON);
   const {
     name,
     contactDetails,
@@ -33,6 +34,7 @@ router.post("/requestData", async (req, res) => {
     !contactDetails ||
     !shippingDetails
   ) {
+    console.log("Problem with data format");
     res.status(422).send({ error: "Please Prove all details" });
   }
 

@@ -39,7 +39,6 @@ router.post("/requestData", async (req, res) => {
 
   try {
     const poolingData = new FarmerReq({
-      requestId,
       name,
       contactDetails,
       locations,

@@ -48,6 +48,7 @@ router.post("/requestData", async (req, res) => {
     await poolingData.save();
     res.send(poolingData._id);
   } catch (err) {
+    console.log(err);
     res.status(422).send(err.message);
   }
 });

@@ -19,7 +19,6 @@ router.get("/farmerRequest/:requestId", async (req, res) => {
 
 router.post("/requestData", async (req, res) => {
   const {
-    requestId,
     name,
     contactDetails,
     locations,

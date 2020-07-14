@@ -5,6 +5,12 @@ const FarmerReq = mongoose.model("FarmerReq");
 
 const router = express.Router();
 
+router.get("/allfarmReq", async (req, res) => {
+  const allReq = await FarmerReq.find({});
+
+  res.send(allReq);
+});
+
 router.get("/farmerRequest/:requestId", async (req, res) => {
   console.log(req.params.requestId);
   try {
@@ -18,7 +24,6 @@ router.get("/farmerRequest/:requestId", async (req, res) => {
 });
 
 router.post("/requestData", async (req, res) => {
-  console.log(req.body);
   const {
     name,
     contactDetails,
@@ -28,7 +33,6 @@ router.post("/requestData", async (req, res) => {
   } = req.body.farmerRequestJSON;
 
   if (!name || !locations || !contactDetails || !shippingDetails) {
-    console.log("Problem with data format");
     res.status(422).send({ error: "Please Prove all details" });
   }
 
@@ -44,7 +48,6 @@ router.post("/requestData", async (req, res) => {
     await poolingData.save();
     res.send(poolingData._id);
   } catch (err) {
-    console.log(err);
     res.status(422).send(err.message);
   }
 });

@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const User = mongoose.model("User");
 const UserProfile = mongoose.model("UserProfile");
 const jwt = require("jsonwebtoken");
+const { response } = require("express");
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
@@ -36,6 +38,28 @@ router.post("/updateUserProfile", async (req, res) => {
     res.send({ token });
   } catch (err) {
     console.log(err);
+    res.send(err);
+  }
+});
+router.put("/updatepass/:phoneno", async (req, res, next) => {
+  const phoneno = req.params.phoneno;
+  try {
+    const user = await User.findOne({ phoneno: phoneno });
+
+    user.password = req.body.password;
+    let hashedpass = req.body.password;
+
+    const query = { phoneno: phoneno };
+    const data = { $set: { password: hashedpass } };
+
+    User.updateOne(query, data, (err, collection) => {
+      if (err) throw err;
+      console.log("Record updated successfully");
+      console.log(collection);
+    });
+
+    res.send("Password Updated");
+  } catch (err) {
     res.send(err);
   }
 });

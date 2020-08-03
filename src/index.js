@@ -2,6 +2,7 @@ require("./models/User");
 require("./models/UserProfile");
 require("./models/Track");
 require("./models/FarmerReq");
+require("./models/DriverReq");
 const requireAuth = require("./middlewares/requireAuth");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -9,15 +10,17 @@ const bodyParser = require("body-parser");
 const trackRoutes = require("./routes/trackRoutes");
 const authRoutes = require("./routes/authRoutes");
 const farmerReqRoutes = require("./routes/farmerReqRoutes");
+const driverReqRoutes = require("./routes/driverReqRoutes");
 const app = express();
 app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(farmerReqRoutes);
+app.use(driverReqRoutes);
 app.use(trackRoutes);
 
 // - ---------------------MongoDB Connection code  Start here--------------------------------
 const mongoUri =
-  "mongodb+srv://asbaghel:ahinsa74@cluster0-prezq.mongodb.net/db94?retryWrites=true&w=majority"; //changed
+  "mongodb+srv://asbaghel:----@cluster0-prezq.mongodb.net/db94?retryWrites=true&w=majority"; //changed
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useCreateIndex: true,

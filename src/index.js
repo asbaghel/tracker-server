@@ -11,8 +11,11 @@ const trackRoutes = require("./routes/trackRoutes");
 const authRoutes = require("./routes/authRoutes");
 const farmerReqRoutes = require("./routes/farmerReqRoutes");
 const driverReqRoutes = require("./routes/driverReqRoutes");
+const cors = require("cors");
 const app = express();
+
 app.use(bodyParser.json());
+app.use(cors());
 app.use(authRoutes);
 app.use(farmerReqRoutes);
 app.use(driverReqRoutes);
